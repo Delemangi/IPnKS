@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+
+    <script>
+        let str = prompt();
+
+        if (isNaN(parseInt(str))) {
+            alert("Not a number")
+        } else if (str.length !== 3) {
+            alert("Not 3 digits long")
+        } else {
+            if (str[0] === str[2]) {
+                alert("Palindrome");
+            } else {
+                alert("Not a palindrome");
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

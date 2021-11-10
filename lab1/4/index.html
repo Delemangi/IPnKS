@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+
+    <script>
+        let str = prompt();
+
+        str = str.split(/,/g);
+
+        let p = 1;
+
+        for (let i of str) {
+            p *= parseInt(i.trim());
+        }
+
+        if (p >= 0) {
+            alert("+");
+        } else {
+            alert("-")
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

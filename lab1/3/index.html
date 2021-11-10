@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+
+    <script>
+        let str = prompt();
+
+        str = str.split(/\s+/g);
+        let max = 0;
+        let longest = str[0];
+
+        for (let i of str) {
+            if (max < i.length) {
+                max = i.length;
+                longest = i;
+            }
+        }
+
+        alert(longest);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
