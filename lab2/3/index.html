@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+
+    <script>
+        window.onload = () => {
+            document.body.style.fontFamily = "Arial";
+
+            document.getElementById("name").innerText = "Stefan";
+            document.getElementById("index").innerText = "206055";
+            document.getElementById("hometown").innerText = "Skopje";
+
+            for (let i of document.getElementsByTagName("li")) {
+                i.style.backgroundColor = "red";
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>About Me</h1>
+<ul>
+    <li>Name: <span id="name"></span>
+    <li>Index: <span id="index"></span>
+    <li>Hometown: <span id="hometown"></span>
+</ul>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+
+    <script>
+        window.onload = () => {
+            let e = document.getElementById("add");
+            let r1 = document.getElementById("r1");
+            let c1 = document.getElementById("c1");
+            let r2 = document.getElementById("r2");
+            let c2 = document.getElementById("c2");
+            let r3 = document.getElementById("r3");
+            let c3 = document.getElementById("c3");
+
+            e.addEventListener("click", () => {
+                if (
+                    !isNaN(parseFloat(r1.value)) &&
+                    !isNaN(parseFloat(c1.value)) &&
+                    !isNaN(parseFloat(r2.value)) &&
+                    !isNaN(parseFloat(c2.value))
+                ) {
+                    r3.value = parseFloat(r1.value) + parseFloat(r2.value);
+                    c3.value = parseFloat(c1.value) + parseFloat(c2.value);
+                }
+            })
+        };
+    </script>
+</head>
+<body>
+<div>
+    <input type="number" id="r1">
+    <input type="number" id="c1">
+    <em>i</em>
+</div>
+<div>
+    <input type="number" id="r2">
+    <input type="number" id="c2">
+    <em>i</em>
+</div>
+<div>
+    <button id="add">Add</button>
+</div>
+<div>
+    <input type="text" id="r3" disabled>
+    <input type="text" id="c3" disabled>
+    <em>i</em>
+</div>
+</body>
+</html>
