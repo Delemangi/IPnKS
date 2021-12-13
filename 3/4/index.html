@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+
+    <script>
+        let books = [];
+
+        function iterateBooks() {
+            for (const book of books) {
+                if (book.read) {
+                    document.write(`<p>You already read "${book.title}" by ${book.author}`);
+                } else {
+                    document.write(`<p>You still need to read "${book.title}" by ${book.author}`);
+                }
+            }
+        }
+
+        function createAndAddBook(title, author, read) {
+            const book = {
+                'title': title,
+                'author': author,
+                'read': read
+            };
+
+            books.push(book);
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
