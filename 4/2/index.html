@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+
+    <style>
+        div:first-of-type {
+            margin-top: 50px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        span {
+            width: 75px;
+            text-align: right;
+            display: inline-block;
+        }
+
+        input:not([type=radio]):not([type=checkbox]) {
+            width: 150px;
+        }
+
+        select {
+            width: 158px;
+        }
+
+        button {
+            margin-left: 167px;
+        }
+
+        div#div {
+            margin-left: 30px;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const div = document.getElementById('div')
+            const button = document.getElementById('button')
+
+            const items = document.getElementById('items')
+            const type = document.getElementById('type')
+
+            button.addEventListener('click', () => {
+                const options = items.value.split(/,/)
+
+                for (const option of options) {
+                    let element
+
+                    if (type.selectedIndex === 0) {
+                        element = document.createElement('input')
+                        element.setAttribute('type', 'radio')
+                        element.setAttribute('name', 'radio')
+                    } else {
+                        element = document.createElement('input')
+                        element.setAttribute('type', 'checkbox')
+                    }
+
+                    div.appendChild(element)
+                    div.appendChild(document.createTextNode(option))
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div>
+        <span>
+            Items:
+        </span>
+        <input id="items" type="text">
+    </div>
+
+    <div>
+        <span>
+            Type:
+        </span>
+        <select id="type">
+            <option>Radio button</option>
+            <option>Checkbox</option>
+        </select>
+    </div>
+    <div>
+        <button id="button">Прикажи</button>
+    </div>
+    <div id="div">
+
+    </div>
+</body>
+
+</html>

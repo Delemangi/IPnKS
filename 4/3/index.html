@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+
+    <style>
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        span {
+            width: 75px;
+            text-align: right;
+            display: inline-block;
+        }
+
+        input:not([type=radio]):not([type=checkbox]) {
+            width: 150px;
+        }
+
+        div:first-of-type {
+            margin-left: 117px;
+        }
+
+        button {
+            margin-left: 165px;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('button');
+
+            const color = document.getElementById('color')
+            const image = document.getElementById('image')
+            const value = document.getElementById('value')
+
+            button.addEventListener('click', () => {
+                if (color.checked) {
+                    document.body.style.backgroundColor = value.value
+                } else if (image.checked) {
+                    document.body.style.backgroundImage = `url('${value.value}')`
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Промена на позадина</h1>
+
+    <div>
+        <input id="color" type="radio" name="radio"> Color
+        <input id="image" type="radio" name="radio"> Image
+    </div>
+
+    <div>
+        <span>
+            Value:
+        </span>
+        <input id="value" type="text">
+    </div>
+
+    <div>
+        <button id="button">Промени</button>
+    </div>
+</body>
+
+</html>

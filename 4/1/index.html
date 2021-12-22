@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+
+    <style>
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        span {
+            width: 75px;
+            text-align: right;
+            display: inline-block;
+        }
+
+        input {
+            width: 150px;
+        }
+
+        select {
+            width: 158px;
+        }
+
+        button {
+            margin-left: 183px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        const array = []
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('button')
+            const table = document.getElementById('table')
+
+            const name = document.getElementById('name')
+            const surname = document.getElementById('surname')
+            const index = document.getElementById('index')
+            const subject = document.getElementById('subject')
+            const grade = document.getElementById('grade')
+
+            button.addEventListener('click', () => {
+                const tr = document.createElement('tr')
+
+                const nameTD = document.createElement('td')
+                const nameText = document.createTextNode(name.value)
+                nameTD.appendChild(nameText)
+                name.value = ''
+                tr.appendChild(nameTD)
+
+                const surnameTD = document.createElement('td')
+                const surnameText = document.createTextNode(surname.value)
+                surnameTD.appendChild(surnameText)
+                surname.value = ''
+                tr.appendChild(surnameTD)
+
+                const indexTD = document.createElement('td')
+                const indexText = document.createTextNode(index.value)
+                indexTD.appendChild(indexText)
+                index.value = ''
+                tr.appendChild(indexTD)
+
+                const subjectTD = document.createElement('td')
+                const subjectText = document.createTextNode(subject.value)
+                subjectTD.appendChild(subjectText)
+                subject.value = ''
+                tr.appendChild(subjectTD)
+
+                const gradeTD = document.createElement('td')
+                const gradeText = document.createTextNode(grade.options[grade.selectedIndex].value)
+
+                gradeTD.appendChild(gradeText)
+                grade.selectedIndex = 0
+                tr.appendChild(gradeTD)
+
+                table.appendChild(tr)
+                array.append(createObject(name, surname, index, subject, grade))
+            })
+        })
+
+        function createObject(name, surname, index, subject, grade) {
+            return {
+                'name': name,
+                'surname': surname,
+                'index': index,
+                'subject': subject,
+                'grade': grade
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Форма за внесување оцени</h1>
+
+    <div>
+        <span>Име:</span>
+        <input id="name" type="text">
+    </div>
+
+    <div>
+        <span>Презиме:</span>
+        <input id="surname" type="text">
+    </div>
+
+    <div>
+        <span>Индекс:</span>
+        <input id="index" type="number">
+    </div>
+
+    <div>
+        <span>Предмет:</span>
+        <input id="subject" type="text">
+    </div>
+
+    <div>
+        <span>Оцена:</span>
+        <select id="grade">
+            <option>5 (пет)</option>
+            <option>6 (шест)</option>
+            <option>7 (седум)</option>
+            <option>8 (осум)</option>
+            <option>9 (девет)</option>
+            <option>10 (десет)</option>
+        </select>
+    </div>
+
+    <div>
+        <button id="button">Внеси</button>
+    </div>
+
+    <table id='table'>
+        <tr>
+            <th>Име</th>
+            <th>Презиме</th>
+            <th>Индекс</th>
+            <th>Предмет</th>
+            <th>Оцена</th>
+        </tr>
+    </table>
+</body>
+
+</html>
