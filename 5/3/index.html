@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
+        let resetButton;
+        let tiles;
+        let permutation;
+        let first;
+        let second;
+
+        const ids = ['t11', 't12', 't13', 't14', 't21', 't22', 't23', 't24', 't31', 't32', 't33', 't34', 't41', 't42', 't43', 't44'];
+        const icons = [
+            'Cloth_icon.png',
+            'High_Quality_Metal_icon.png',
+            'Low_Grade_Fuel_icon.png',
+            'Metal_Fragments_icon.png',
+            'Scrap_icon.png',
+            'Stones_icon.png',
+            'Sulfur_icon.png',
+            'Wood_icon.png'
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            resetButton = document.querySelector('input[type="submit"]');
+            tiles = document.getElementsByTagName('td');
+
+            resetButton.addEventListener('click', () => initGame());
+
+            for (const tile of tiles) {
+                tile.addEventListener('click', click);
+            }
+
+            initGame();
+        });
+
+        function initGame() {
+            permutation = [...icons, ...icons];
+            shuffle();
+
+            for (let i = 0; i < 16; i++) {
+                document.querySelector(`td#${ids[i]} img`).src = 'default.png';
+            }
+        }
+
+        function shuffle() {
+            for (let i = permutation.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+
+                let temp = permutation[i];
+                permutation[i] = permutation[j];
+                permutation[j] = temp;
+            }
+        }
+
+        function click(event) {
+            let element;
+
+            if (event.target.nodeName === 'IMG') {
+                element = event.target.parentElement.id;
+            } else {
+                element = event.target.id;
+            }
+
+            if (!document.getElementById(element).children[0].src.match(/.*default\.png/g)) {
+                return;
+            }
+
+            document.getElementById(element).children[0].src = permutation[ids.indexOf(element)];
+
+            if (first !== undefined) {
+                document.getElementById(first).children[0].src = 'default.png';
+            }
+
+            first = second;
+            second = element;
+
+            if (first !== undefined && second !== undefined && document.getElementById(first).children[0].src === document.getElementById(second).children[0].src) {
+                first = undefined;
+                second = undefined;
+            }
+        }
+    </script>
+    <style>
+        img {
+            width: 125px;
+            height: 125px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Meморија</h1>
+    <div style="text-align:left; float:left">
+        <table border="1">
+            <tr>
+                <td id="t11"><img src="" /></td>
+                <td id="t12"><img src="" /></td>
+                <td id="t13"><img src="" /></td>
+                <td id="t14"><img src="" /></td>
+            </tr>
+            <tr>
+                <td id="t21"><img src="" /></td>
+                <td id="t22"><img src="" /></td>
+                <td id="t23"><img src="" /></td>
+                <td id="t24"><img src="" /></td>
+            </tr>
+            <tr>
+                <td id="t31"><img src="" /></td>
+                <td id="t32"><img src="" /></td>
+                <td id="t33"><img src="" /></td>
+                <td id="t34"><img src="" /></td>
+            </tr>
+            <tr>
+                <td id="t41"><img src="" /></td>
+                <td id="t42"><img src="" /></td>
+                <td id="t43"><img src="" /></td>
+                <td id="t44"><img src="" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="RESET" />
+    </div>
+    <br />
+</body>

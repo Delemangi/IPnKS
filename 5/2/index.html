@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
+        let startButton;
+        let guessButton;
+        let guessInput;
+        let attemptsLabel;
+        let logs;
+
+        let number;
+        let attempts;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            startButton = document.querySelector('button:last-of-type');
+            guessButton = document.querySelector('button:first-of-type');
+            guessInput = document.getElementById('guess');
+            attemptsLabel = document.getElementById('obid');
+            logs = document.getElementById('prikaz');
+
+            startButton.addEventListener('click', () => {
+                initGame();
+            });
+
+            guessButton.addEventListener('click', () => {
+                const element = document.createElement('p');
+                element.appendChild(document.createTextNode(check(guessInput.value)));
+                attempts++;
+
+                attemptsLabel.innerText = `Обиди ${attempts}`;
+                logs.appendChild(element);
+
+                if (attempts === 10) {
+                    guessButton.disabled = true;
+
+                    if (guessInput.value !== number) {
+                        logs.appendChild(document.createTextNode(`Не успеавте да погодите од 10 обиди. Бројот е ${number}`));
+                    }
+                }
+            });
+
+            initGame();
+        });
+
+        function initGame() {
+            guessButton.disabled = false;
+            number = random();
+            attempts = 0;
+            attemptsLabel.innerText = 'Обиди 0';
+            prikaz.innerHTML = '';
+        }
+
+        function random() {
+            return Math.floor(Math.random() * 9000 + 1000).toString();
+        }
+
+        function check(num) {
+            if (number == num) {
+                guessButton.disabled = true;
+                return 'ПОГОДОК!!!';
+            }
+
+            let normalMatches = 0;
+            let inPlaceMatches = 0;
+
+            for (let i = 0; i < 4; i++) {
+                if (number[i] === num[i]) {
+                    inPlaceMatches++;
+                }
+            }
+
+            let temp = number;
+            for (const c of num) {
+                if (temp.includes(c)) {
+                    normalMatches++;
+                    temp = temp.replace(c, '');
+                }
+            }
+
+            return `Има ${Math.max(normalMatches - inPlaceMatches, 0)}, на место ${inPlaceMatches} ${num}`;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <div style="text-align:right; float:left">
+            <label id="obid">Обиди 0</label>
+            <p>Погодок: <input id="guess" style="width:150px" /></p>
+            <button>Погоди</button>
+            <button>Од почеток</button>
+        </div>
+    </div>
+    <br />
+    <div id="prikaz" style="clear: both">
+    </div>
+</body>
+
+</html>

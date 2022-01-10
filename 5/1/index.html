@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+    <title>1</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('button');
+
+            const result = document.getElementById('rezultat');
+            const input1 = document.getElementById('a');
+            const input2 = document.getElementById('b');
+
+            button.addEventListener('click', () => {
+                const operation = document.querySelector('input[name="oper"]:checked').id;
+                const a = Number.parseInt(input1.value);
+                const b = Number.parseInt(input2.value);
+
+                switch (operation) {
+                    case "plus":
+                        result.innerText = a + b;
+                        break;
+                    case "minus":
+                        result.innerText = a - b;
+                        break;
+                    case "mnoz":
+                        result.innerText = a * b;
+                        break;
+                    case "del":
+                        result.innerText = a / b;
+                        break;
+                    case "sin":
+                        result.innerText = Math.sin(a);
+                        break;
+                    case "cos":
+                        result.innerText = Math.cos(a);
+                        break;
+                    case "tg":
+                        result.innerText = Math.tan(a);
+                        break;
+                    case "cel":
+                        result.innerText = Math.floor(a);
+                        break;
+                    case "stepen":
+                        result.innerText = Math.pow(a, b);
+                        break;
+                    case "koren":
+                        result.innerText = Math.sqrt(a);
+                        break;
+                    default:
+                        break;
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Калкулатор</h1>
+    <div>
+        <div style="text-align:left; float:left">
+            <p>а <input id="a" style="width:15px" />
+                b <input id="b" style="width:15px" /></p>
+            <p>
+                <input id="plus" type="radio" name="oper" checked>a+b
+                <input id="minus" type="radio" name="oper">a-b
+                <input id="mnoz" type="radio" name="oper">a*b
+                <input id="del" type="radio" name="oper">a/b
+                <br>
+                <input id="sin" type="radio" name="oper">sin(a)
+                <input id="cos" type="radio" name="oper">cos(a)
+                <input id="tg" type="radio" name="oper">tg(a)
+                <br>
+                <input id="cel" type="radio" name="oper">[a]
+                <input id="stepen" type="radio" name="oper">a<sup>b</sup>
+                <input id="koren" type="radio" name="oper">&radic;<span style="text-decoration:overline">a</span>
+            </p>
+            <button>Пресметај</button>
+            <p id="rezultat"></p>
+        </div>
+    </div>
+    <br />
+</body>
+
+</html>
